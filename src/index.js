@@ -25,11 +25,11 @@ app.get("/api/posts", (req, res) => {
   noOfPosts=Number(req.query.max);
   if (requestCount <= 5) {
     if (noOfPosts <= 20) {
-        if(prevMax)
+        if(prevMax)//if not set to null means not firsst request    
         {
             noOfPosts=noOfPosts<prevMax?noOfPosts:prevMax;
         }
-        prevMax=noOfPosts;//>prevMax?noOfPosts:prevMax;
+        prevMax=noOfPosts>prevMax?noOfPosts:prevMax;//>prevMax?noOfPosts:prevMax;
 
       res.send(posts.slice(0, noOfPosts));
     } else {
